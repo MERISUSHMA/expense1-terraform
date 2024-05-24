@@ -43,13 +43,13 @@ resource "aws_route_table" "public" {
   tags = merge(var.tags, {Name = "public"})
 
   route {
-    cidr_block = "var.default_vpc_cidr"
+    cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.igw.id
 
   }
 
   route {
-    cidr_block = "var.default_vpc_cidr"
+    cidr_block = var.default_vpc_cidr
     vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
   }
 }
@@ -59,12 +59,12 @@ resource "aws_route_table" "web" {
   tags = merge(var.tags, {Name = "web"})
 
   route {
-    cidr_block = "var.default_vpc_cidr"
+    cidr_block = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.ngw.id
   }
 
   route {
-    cidr_block = "var.default_vpc_cidr"
+    cidr_block = var.default_vpc_cidr
     vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
   }
 }
@@ -74,14 +74,14 @@ resource "aws_route_table" "app" {
   tags = merge(var.tags, {Name = "app"})
 
   route {
-    cidr_block = "var.default_vpc_cidr"
+    cidr_block = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.ngw.id
   }
-
   route {
-    cidr_block = "var.default_vpc_cidr"
+    cidr_block = var.default_vpc_cidr
     vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
-      }
+  }
+
 }
 
 resource "aws_route_table" "db" {
@@ -89,14 +89,14 @@ resource "aws_route_table" "db" {
   tags = merge(var.tags, {Name = "db"})
 
   route {
-    cidr_block = "var.default_vpc_cidr"
+    cidr_block = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.ngw.id
   }
 
   route {
-    cidr_block = "var.default_vpc_cidr"
+    cidr_block = var.default_vpc_cidr
     vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
-      }
+  }
 }
 
 resource "aws_route_table_association" "public" {
