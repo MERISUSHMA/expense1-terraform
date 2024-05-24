@@ -43,7 +43,7 @@ resource "aws_route_table" "public" {
   tags = merge(var.tags, {Name = "public"})
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "var.default_vpc_cidr"
     gateway_id = aws_internet_gateway.igw.id
 
   }
