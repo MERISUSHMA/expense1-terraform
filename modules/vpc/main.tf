@@ -59,7 +59,7 @@ resource "aws_route_table" "web" {
   tags = merge(var.tags, {Name = "web"})
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "var.default_vpc_cidr"
     nat_gateway_id = aws_nat_gateway.ngw.id
   }
 
@@ -74,7 +74,7 @@ resource "aws_route_table" "app" {
   tags = merge(var.tags, {Name = "app"})
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "var.default_vpc_cidr"
     nat_gateway_id = aws_nat_gateway.ngw.id
   }
 
@@ -89,7 +89,7 @@ resource "aws_route_table" "db" {
   tags = merge(var.tags, {Name = "db"})
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "var.default_vpc_cidr"
     nat_gateway_id = aws_nat_gateway.ngw.id
   }
 
