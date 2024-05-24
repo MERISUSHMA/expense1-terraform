@@ -1,3 +1,6 @@
+variable "dafault_vpc_cidr" {
+  default = ""
+}
 module "vpc" {
   source         = "./modules/vpc"
   vpc_cidr_block = var.vpc_cidr_block
@@ -11,5 +14,7 @@ module "vpc" {
   account_id     = var.account_id
 default_vpc_id   = var.default_vpc_id
 default_route_id = var.default_route_id
+  default_vpc_cidr = var.dafault_vpc_cidr
+  default_route_table_id = var.default_route_table_id
 }
 
