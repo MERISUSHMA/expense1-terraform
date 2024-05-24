@@ -64,7 +64,7 @@ resource "aws_route_table" "app" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
+    nat_gateway_id = aws_nat_gateway.ngw.id
   }
 }
 
@@ -74,7 +74,7 @@ resource "aws_route_table" "db" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igw.id
+    nat_gateway_id = aws_nat_gateway.ngw.id
   }
 }
 
