@@ -40,7 +40,7 @@ resource "aws_subnet" "db" {
 
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
-  tags = merge(var.tags, {Name = "public"})
+  tags = merge(var.tags, { Name = "public" })
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -56,7 +56,7 @@ resource "aws_route_table" "public" {
 
 resource "aws_route_table" "web" {
   vpc_id = aws_vpc.main.id
-  tags = merge(var.tags, {Name = "web"})
+  tags = merge(var.tags, { Name = "web" })
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -71,7 +71,7 @@ resource "aws_route_table" "web" {
 
 resource "aws_route_table" "app" {
   vpc_id = aws_vpc.main.id
-  tags = merge(var.tags, {Name = "app"})
+  tags = merge(var.tags, { Name = "app" })
 
   route {
     cidr_block = "0.0.0.0/0"
